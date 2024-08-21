@@ -1,6 +1,6 @@
 ﻿# CMakeList.txt : CMake project for Hustle-Hamster, include source and define
 # project specific logic here.
-#
+
 
 # Add source to this project's executable.
 add_executable (Hustle-Hamster "Date.cpp" "Date.h" "Journal.cpp" "Journal.h" "main.cpp")
@@ -9,4 +9,7 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Hustle-Hamster PROPERTY CXX_STANDARD 20)
 endif()
 
-# TODO: Add tests and install targets if needed.
+enable_testing()
+add_executable(Test "Testing.cpp" "Journal.cpp" "Date.cpp")
+add_test(NAME Test COMMAND Test)
+set_tests_properties(Test PROPERTIES PASS_REGULAR_EXPRESSION "All tests passed!")
